@@ -1,0 +1,57 @@
+.Conact-section{
+    margin-top: 30px ;
+   
+}
+select{
+    font-size: 60px;
+}
+.reg-marker{
+    display: flex;
+    justify-content: flex-start;
+align-items: center;
+gap: 1vw;}
+
+.reg-marker-item{
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    background-color: #B9FF66;
+}
+.checked{
+    background-color: #ffffff;
+}
+
+.btn-active{
+    background-color: #B9FF66;
+    border: solid black 1px;
+    
+}
+.btn-active span{ 
+color: black;
+
+    
+}
+.reg-page-text{
+    color: blueviolet;
+    font-size: 24px;
+}
+.next{
+    width: 100%;
+    background-color: rgb(149, 0, 255);
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    display: none;
+}
+.text_btn_visible{
+    display: block;
+}
+
+.Conact-section-content-img img{
+    width: 600px;
+}
+.Conact-section-content{
+    justify-content: center;
+}

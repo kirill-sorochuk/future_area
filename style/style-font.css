@@ -1,0 +1,16 @@
+@font-face{
+    font-family: 'Space-Grotesk-Regular';
+    src: url('../fonts/Space_Grotesk/SpaceGrotesk-Regular.woff2')format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    
+}
+@font-face{
+    font-family: 'Space-Grotesk-medium';
+    src: url('../fonts/Space_Grotesk/SpaceGrotesk-Medium.woff2')format('woff2');
+    /* font-weight: 400; */
+    font-style: normal;
+    font-display: swap;
+    
+}

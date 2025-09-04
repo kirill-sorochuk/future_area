@@ -1,0 +1,53 @@
+.top-right ul li a:hover{
+    color: #B9FF66;
+    transition: ease .3s;
+    font-size: 19px;
+    background-color: black;
+    padding: 10px;
+   border-radius: 10px;
+    
+}
+.button p:hover {
+    margin: 0;
+    font-size: 24px; 
+    transition:all .3s;
+}
+.main-header__content-button :hover{
+
+    font-size: 24px;
+    transition:all .3s;
+ 
+    
+}
+.main-header__content-button:hover::before {
+   transition:all .3s;
+  content: "";
+  position: absolute;
+  width: 800px;
+  height: 200px;
+  background: radial-gradient(circle, #B9FF66, transparent 70%);
+  filter: blur(100px);
+  transition:all .3s;
+  z-index: -1;
+}
+.pacet:hover::before{
+  transition:all .3s;
+  content: "";
+  position: absolute;
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(circle, #B9FF66, transparent 100%);
+  filter: blur(100px);
+  transition:all .3s;
+  z-index: -1;
+
+}
+.CTA-section__left-button :hover{
+    font-size: 23px;
+    transition:all .3s;
+}
+.Team_section__left-button :hover{
+    transition:all .3s;
+font-size: 23px;
+}
+
