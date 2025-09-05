@@ -1,0 +1,133 @@
+{
+  "countries": [
+    {
+      "id": "russia",
+      "name": "Россия",
+      "regions": [
+        {
+          "id": "moscow",
+          "name": "Московская область",
+          "cities": [
+            {"id": "moscow", "name": "Москва"},
+            {"id": "khimki", "name": "Химки"},
+            {"id": "podolsk", "name": "Подольск"}
+          ]
+        },
+        {
+          "id": "spb",
+          "name": "Санкт-Петербург и область",
+          "cities": [
+            {"id": "saint-petersburg", "name": "Санкт-Петербург"},
+            {"id": "vyborg", "name": "Выборг"},
+            {"id": "gatchina", "name": "Гатчина"}
+          ]
+        },
+        {
+          "id": "krasnodar",
+          "name": "Краснодарский край",
+          "cities": [
+            {"id": "krasnodar", "name": "Краснодар"},
+            {"id": "sochi", "name": "Сочи"},
+            {"id": "novorossiysk", "name": "Новороссийск"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "brazil",
+      "name": "Бразилия",
+      "regions": [
+        {
+          "id": "sao-paulo",
+          "name": "Сан-Паулу",
+          "cities": [
+            {"id": "sao-paulo", "name": "Сан-Паулу"},
+            {"id": "campinas", "name": "Кампинас"}
+          ]
+        },
+        {
+          "id": "rio",
+          "name": "Рио-де-Жанейро",
+          "cities": [
+            {"id": "rio-de-janeiro", "name": "Рио-де-Жанейро"},
+            {"id": "niteroi", "name": "Нитерой"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "name": "Индия",
+      "regions": [
+        {
+          "id": "maharashtra",
+          "name": "Махараштра",
+          "cities": [
+            {"id": "mumbai", "name": "Мумбаи"},
+            {"id": "pune", "name": "Пуна"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "china",
+      "name": "Китай",
+      "regions": [
+        {
+          "id": "beijing",
+          "name": "Пекин",
+          "cities": [
+            {"id": "beijing-city", "name": "Пекин"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "south-africa",
+      "name": "Южная Африка",
+      "regions": [
+        {
+          "id": "gauteng",
+          "name": "Гаутенг",
+          "cities": [
+            {"id": "johannesburg", "name": "Йоханнесбург"},
+            {"id": "pretoria", "name": "Претория"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kazakhstan",
+      "name": "Казахстан",
+      "regions": [
+        {
+          "id": "almaty",
+          "name": "Алматинская область",
+          "cities": [
+            {"id": "almaty", "name": "Алматы"},
+            {"id": "taldykorgan", "name": "Талдыкорган"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "belarus",
+      "name": "Беларусь",
+      "regions": [
+        {
+          "id": "minsk",
+          "name": "Минская область",
+          "cities": [
+            {"id": "minsk", "name": "Минск"},
+            {"id": "borisov", "name": "Борисов"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "other",
+      "name": "Другая страна",
+      "regions": []
+    }
+  ]
+}

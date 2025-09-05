@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+        .skill-range {
+            width: 100%;
+            margin: 5px 0;
+        }
+        .social-input-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .social-link-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <div class="header">
+        <button class="back-btn" id="back-button">
+            <i class="fas fa-arrow-left"></i> Назад
+        </button>
+        <h1><i class="fas fa-user-circle"></i> Мой профиль</h1>
+        <p>Заполните информацию о себе</p>
+    </div>
+
+    <div class="container">
+        <form class="form-section" id="user-data-form">
+            <!-- Основные поля формы остаются без изменений -->
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Фамилия *</label>
+                <input type="text" class="input-green" placeholder="Введите вашу фамилию" required id="lastname">
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Имя *</label>
+                <input type="text" class="input-green" placeholder="Введите ваше имя" required id="firstname">
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Отчество *</label>
+                <input type="text" class="input-green" placeholder="Введите ваше отчество" required id="middlename">
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Email (логин) *</label>
+                <input type="email" class="input-green" placeholder="example@mail.com" required id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                <span class="input-hint">Формат: example@mail.com</span>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-venus-mars"></i> Укажите пол *</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="sex" class="custom-radio" value="male" required>
+                        <span class="radio-custom"></span>
+                        Мужской
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="sex" class="custom-radio" value="female">
+                        <span class="radio-custom"></span>
+                        Женский
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-phone"></i> Номер телефона *</label>
+                <input type="tel" class="input-green" placeholder="+7 (000) 000-00-00" required id="phone">
+                <span class="input-hint">Формат: +7 (XXX) XXX-XX-XX</span>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-graduation-cap"></i> Образование</label>
+                <input type="text" class="input-gray" placeholder="Укажите ваше образование" id="education">
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-heart"></i> О себе</label>
+                <textarea class="input-gray" placeholder="Расскажите о своих увлечениях, хобби и интересах" rows="3" id="about"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="checkbox-option">
+                    <input type="checkbox" class="custom-checkbox" id="foreign-lang">
+                    <span class="checkmark"></span>
+                    <i class="fas fa-language"></i> Знание иностранного языка
+                </label>
+            </div>
+
+            <!-- Новые поля для смены пароля -->
+            <div class="form-group">
+                <label><i class="fas fa-lock"></i> Новый пароль</label>
+                <input type="password" class="input-gray" placeholder="Введите новый пароль" id="new-password">
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-lock"></i> Повторите новый пароль</label>
+                <input type="password" class="input-gray" placeholder="Повторите новый пароль" id="confirm-password">
+                <span class="input-hint" id="password-match-hint" style="color: red; display: none;">Пароли не совпадают</span>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-share-alt"></i> Ссылки на социальные сети</label>
+                <div id="social-links-container">
+                    <!-- Социальные ссылки будут добавляться здесь -->
+                </div>
+                <button type="button" class="btn-plus" id="add-social-link" style="margin-top: 10px;">
+                    <i class="fas fa-plus"></i> Добавить ссылку
+                </button>
+            </div>
+
+            <p class="note">
+                <i class="fas fa-info-circle"></i> Поля, отмеченные звездочкой (*), обязательны для заполнения
+            </p>
+        </form>
+
+        <div class="upload-section">
+            <div class="photo-upload" id="photo-upload-area">
+                <div class="upload-content">
+                    <div class="upload-icon"><i class="fas fa-camera"></i></div>
+                    <div class="upload-text">Загрузите ваше фото</div>
+                    <div class="upload-subtext">PNG, JPG до 5MB</div>
+                </div>
+                <input type="file" accept="image/*" id="photo-upload-input">
+            </div>
+
+            <div class="additional-info">
+                <h3><i class="fas fa-info-circle"></i> Дополнительная информация</h3>
+                <p>Заполнение этих полей поможет нам лучше узнать вас и предложить более персонализированный сервис.</p>
+
+                <div class="form-group">
+                    <label><i class="fas fa-birthday-cake"></i> Дата рождения</label>
+                    <input type="date" class="input-gray" id="birthdate">
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-briefcase"></i> Профессия</label>
+                    <select class="input-gray" id="profession-select">
+                        <option value="">Выберите профессию</option>
+                        <!-- Options will be populated from JSON -->
+                    </select>
+                </div>
+
+                <div class="form-group" id="skills-container">
+                    <label><i class="fas fa-star"></i> Навыки</label>
+                    <div id="dynamic-skills">
+                        <!-- Skills will be populated based on profession -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-card">
+                <h3><i class="fas fa-map-marker-alt"></i> Местоположение</h3>
+
+                <div class="form-group">
+                    <label>Страна</label>
+                    <div class="select-wrapper">
+                        <select id="country-select">
+                            <option value="">Выберите страну</option>
+                            <!-- Options will be populated from JSON -->
+                        </select>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+
+                <div id="region-container" class="hidden">
+                    <div class="form-group">
+                        <label>Регион</label>
+                        <div class="select-wrapper">
+                            <select id="region-select">
+                                <option value="">Выберите регион</option>
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="city-container" class="hidden">
+                    <div class="form-group">
+                        <label>Город</label>
+                        <div class="select-wrapper">
+                            <select id="city-select">
+                                <option value="">Выберите город</option>
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-home"></i> Адрес</label>
+                    <input type="text" class="input-gray" placeholder="Введите ваш адрес" id="address-input">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="action-buttons">
+        <button class="btn-secondary" id="cancel-button"><i class="fas fa-times"></i> Отмена</button>
+        <button class="btn-primary" id="save-button"><i class="fas fa-save"></i> Сохранить изменения</button>
+    </div>
+</div>
+
+<!-- Модальное окно редактирования фото -->
+<div class="modal" id="crop-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3><i class="fas fa-crop-alt"></i> Редактирование фото</h3>
+            <button class="modal-close" id="close-crop-modal"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="crop-container">
+                <img id="crop-image" src="" alt="Изображение для обрезки">
+            </div>
+            <div class="crop-controls">
+                <button class="btn-rotate" id="rotate-left"><i class="fas fa-undo"></i></button>
+                <button class="btn-rotate" id="rotate-right"><i class="fas fa-redo"></i></button>
+                <button class="btn-crop-confirm" id="crop-confirm"><i class="fas fa-check"></i> Применить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="scripts/image-uploader.js"></script>
+<!--<script src="scripts/scripts.js"></script>-->
+<script>
+    let professionsData = [];
+    let locationsData = [];
+    let socialLinksCount = 0;
+
+    // Проверка авторизации
+    document.addEventListener('DOMContentLoaded', async function() {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser) {
+            alert('Пожалуйста, войдите в систему');
+            window.location.href = 'sign-in-page.html';
+            return;
+        }
+        // Инициализируем загрузчик изображений
+        imageUploader = new ImageUploader();
+        imageUploader.loadProfileImage();
+
+
+        // Загружаем JSON данные
+        await loadJSONData();
+
+        // Инициализируем форму
+        initializeForm(currentUser);
+
+        // Настраиваем обработчики событий
+        setupEventHandlers();
+    });
+
+    // Функция загрузки JSON данных
+    async function loadJSONData() {
+        try {
+            const [professionsResponse, locationsResponse] = await Promise.all([
+                fetch('professions.json'),
+                fetch('locations.json')
+            ]);
+
+            if (!professionsResponse.ok || !locationsResponse.ok) {
+                throw new Error('Ошибка загрузки файлов');
+            }
+
+            const professionsDataJson = await professionsResponse.json();
+            const locationsDataJson = await locationsResponse.json();
+
+            professionsData = professionsDataJson.professions || [];
+            locationsData = locationsDataJson.countries || [];
+
+            // Заполняем выпадающие списки
+            populateProfessions();
+            populateCountries();
+
+        } catch (error) {
+            console.error('Ошибка загрузки данных:', error);
+        }
+    }
+
+    // Заполнение списка профессий
+    function populateProfessions() {
+        const professionSelect = document.getElementById('profession-select');
+        professionSelect.innerHTML = '<option value="">Выберите профессию</option>';
+
+        professionsData.forEach(profession => {
+            const option = document.createElement('option');
+            option.value = profession.id;
+            option.textContent = profession.name;
+            professionSelect.appendChild(option);
+        });
+    }
+
+    // Заполнение списка стран
+    function populateCountries() {
+        const countrySelect = document.getElementById('country-select');
+        countrySelect.innerHTML = '<option value="">Выберите страну</option>';
+
+        locationsData.forEach(country => {
+            const option = document.createElement('option');
+            option.value = country.id;
+            option.textContent = country.name;
+            countrySelect.appendChild(option);
+        });
+    }
+
+    // Заполнение списка регионов
+    function populateRegions(countryId) {
+        const regionSelect = document.getElementById('region-select');
+        const regionContainer = document.getElementById('region-container');
+        const cityContainer = document.getElementById('city-container');
+
+        regionSelect.innerHTML = '<option value="">Выберите регион</option>';
+        document.getElementById('city-select').innerHTML = '<option value="">Выберите город</option>';
+
+        const country = locationsData.find(c => c.id === countryId);
+        if (country && country.regions && country.regions.length > 0) {
+            regionContainer.classList.remove('hidden');
+
+            country.regions.forEach(region => {
+                const option = document.createElement('option');
+                option.value = region.id;
+                option.textContent = region.name;
+                regionSelect.appendChild(option);
+            });
+        } else {
+            regionContainer.classList.add('hidden');
+            cityContainer.classList.add('hidden');
+        }
+    }
+
+    // Заполнение списка городов
+    function populateCities(countryId, regionId) {
+        const citySelect = document.getElementById('city-select');
+        const cityContainer = document.getElementById('city-container');
+
+        citySelect.innerHTML = '<option value="">Выберите город</option>';
+
+        const country = locationsData.find(c => c.id === countryId);
+        if (country) {
+            const region = country.regions.find(r => r.id === regionId);
+            if (region && region.cities && region.cities.length > 0) {
+                cityContainer.classList.remove('hidden');
+
+                region.cities.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city.id;
+                    option.textContent = city.name;
+                    citySelect.appendChild(option);
+                });
+            } else {
+                cityContainer.classList.add('hidden');
+            }
+        }
+    }
+
+    // Обновление навыков при выборе профессии
+    function updateSkills(professionId) {
+        const skillsContainer = document.getElementById('dynamic-skills');
+        skillsContainer.innerHTML = '';
+
+        const profession = professionsData.find(p => p.id === professionId);
+        if (profession && profession.skills) {
+            profession.skills.forEach(skill => {
+                const skillDiv = document.createElement('div');
+                skillDiv.className = 'form-group';
+                skillDiv.innerHTML = `
+                    <label>${skill.name}</label>
+                    <input type="range" class="skill-range" min="0" max="100" value="0"
+                           id="skill-${skill.id}" name="skills[${skill.id}]">
+                    <span>0%</span>
+                `;
+                skillsContainer.appendChild(skillDiv);
+
+                // Обработчик изменения значения навыка
+                const rangeInput = skillDiv.querySelector('input[type="range"]');
+                const valueSpan = skillDiv.querySelector('span');
+
+                rangeInput.addEventListener('input', function() {
+                    valueSpan.textContent = `${this.value}%`;
+                });
+            });
+        }
+    }
+
+    // Добавление социальной ссылки
+    function addSocialLink() {
+        socialLinksCount++;
+        const socialLinksContainer = document.getElementById('social-links-container');
+
+        const socialLinkDiv = document.createElement('div');
+        socialLinkDiv.className = 'social-link-item';
+        socialLinkDiv.innerHTML = `
+            <select class="social-type" name="social-type-${socialLinksCount}">
+                <option value="vk">VK</option>
+                <option value="telegram">Telegram</option>
+                <option value="instagram">Instagram</option>
+                <option value="youtube">YouTube</option>
+                <option value="max">MAX</option>
+                <option value="other">Другая</option>
+            </select>
+            <input type="url" class="input-gray" placeholder="https://..." name="social-url-${socialLinksCount}">
+            <button type="button" class="btn-remove-social" onclick="this.parentElement.remove()">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+
+        socialLinksContainer.appendChild(socialLinkDiv);
+    }
+
+    // Инициализация формы
+    function initializeForm(currentUser) {
+        // Заполняем основные поля
+        document.getElementById('lastname').value = currentUser.lastName || '';
+        document.getElementById('firstname').value = currentUser.firstName || '';
+        document.getElementById('middlename').value = currentUser.middleName || '';
+        document.getElementById('email').value = currentUser.email || '';
+        document.getElementById('phone').value = currentUser.phone || '';
+        document.getElementById('education').value = currentUser.education || '';
+        document.getElementById('about').value = currentUser.about || '';
+        document.getElementById('foreign-lang').checked = currentUser.foreignLang || false;
+        document.getElementById('birthdate').value = currentUser.birthdate || '';
+        document.getElementById('address-input').value = currentUser.address || '';
+
+        // Устанавливаем пол
+        if (currentUser.sex) {
+            document.querySelector(`input[name="sex"][value="${currentUser.sex}"]`).checked = true;
+        }
+
+        // Устанавливаем профессию и навыки
+        if (currentUser.profession) {
+            document.getElementById('profession-select').value = currentUser.profession;
+            updateSkills(currentUser.profession);
+
+            // Заполняем значения навыков
+            if (currentUser.skills) {
+                setTimeout(() => {
+                    Object.entries(currentUser.skills).forEach(([skillId, value]) => {
+                        const skillInput = document.getElementById(`skill-${skillId}`);
+                        if (skillInput) {
+                            skillInput.value = value;
+                            skillInput.nextElementSibling.textContent = `${value}%`;
+                        }
+                    });
+                }, 100);
+            }
+        }
+
+        // Устанавливаем местоположение
+        if (currentUser.country) {
+            document.getElementById('country-select').value = currentUser.country;
+            populateRegions(currentUser.country);
+
+            if (currentUser.region) {
+                setTimeout(() => {
+                    document.getElementById('region-select').value = currentUser.region;
+                    populateCities(currentUser.country, currentUser.region);
+
+                    if (currentUser.city) {
+                        setTimeout(() => {
+                            document.getElementById('city-select').value = currentUser.city;
+                        }, 100);
+                    }
+                }, 100);
+            }
+        }
+
+        // Заполняем социальные ссылки
+        if (currentUser.socialLinks && currentUser.socialLinks.length > 0) {
+            currentUser.socialLinks.forEach(link => {
+                addSocialLink();
+                setTimeout(() => {
+                    const lastLink = document.querySelector('.social-link-item:last-child');
+                    if (lastLink) {
+                        lastLink.querySelector('.social-type').value = link.type;
+                        lastLink.querySelector('input[type="url"]').value = link.url;
+                    }
+                }, 100);
+            });
+        }
+    }
+
+    // Настройка обработчиков событий
+    function setupEventHandlers() {
+        const backButton = document.getElementById('back-button');
+        const cancelButton = document.getElementById('cancel-button');
+        const saveButton = document.getElementById('save-button');
+        const newPasswordInput = document.getElementById('new-password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+        const passwordMatchHint = document.getElementById('password-match-hint');
+        const phoneInput = document.getElementById('phone');
+        const countrySelect = document.getElementById('country-select');
+        const regionSelect = document.getElementById('region-select');
+        const professionSelect = document.getElementById('profession-select');
+        const addSocialButton = document.getElementById('add-social-link');
+
+        // Маска для телефона
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.startsWith('7') || value.startsWith('8')) {
+                value = value.substring(1);
+            }
+
+            let formattedValue = '+7';
+            if (value.length > 0) {
+                formattedValue += ' (' + value.substring(0, 3);
+            }
+            if (value.length > 3) {
+                formattedValue += ') ' + value.substring(3, 6);
+            }
+            if (value.length > 6) {
+                formattedValue += '-' + value.substring(6, 8);
+            }
+            if (value.length > 8) {
+                formattedValue += '-' + value.substring(8, 10);
+            }
+
+            e.target.value = formattedValue;
+        });
+
+        // Обработчики для выпадающих списков
+        countrySelect.addEventListener('change', function() {
+            populateRegions(this.value);
+        });
+
+        regionSelect.addEventListener('change', function() {
+            populateCities(countrySelect.value, this.value);
+        });
+
+        professionSelect.addEventListener('change', function() {
+            updateSkills(this.value);
+        });
+
+        // Добавление социальной ссылки
+        addSocialButton.addEventListener('click', addSocialLink);
+
+        // Проверка совпадения паролей
+        function checkPasswordMatch() {
+            if (newPasswordInput.value && newPasswordInput.value !== confirmPasswordInput.value) {
+                passwordMatchHint.style.display = 'block';
+                return false;
+            } else {
+                passwordMatchHint.style.display = 'none';
+                return true;
+            }
+        }
+
+        newPasswordInput.addEventListener('input', checkPasswordMatch);
+        confirmPasswordInput.addEventListener('input', checkPasswordMatch);
+
+        // Обработчики кнопок
+        if (backButton) {
+            backButton.addEventListener('click', function() {
+                window.location.href = 'LK.html';
+            });
+        }
+
+        if (cancelButton) {
+            cancelButton.addEventListener('click', function() {
+                window.location.href = 'LK.html';
+            });
+        }
+
+        if (saveButton) {
+            saveButton.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Проверяем совпадение паролей
+                if (!checkPasswordMatch()) {
+                    alert('Пароли не совпадают!');
+                    return;
+                }
+
+                // Проверяем валидность email
+                const emailInput = document.getElementById('email');
+                if (!emailInput.checkValidity()) {
+                    alert('Пожалуйста, введите корректный email адрес');
+                    emailInput.focus();
+                    return;
+                }
+
+                // Собираем данные навыков
+                const skills = {};
+                document.querySelectorAll('.skill-range').forEach(input => {
+                    const skillId = input.id.replace('skill-', '');
+                    skills[skillId] = parseInt(input.value);
+                });
+
+                // Собираем социальные ссылки
+                const socialLinks = [];
+                document.querySelectorAll('.social-link-item').forEach(item => {
+                    const type = item.querySelector('.social-type').value;
+                    const url = item.querySelector('input[type="url"]').value;
+                    if (url) {
+                        socialLinks.push({ type, url });
+                    }
+                });
+
+                // Собираем данные из формы
+                const userData = {
+                    lastName: document.getElementById('lastname').value,
+                    firstName: document.getElementById('firstname').value,
+                    middleName: document.getElementById('middlename').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    education: document.getElementById('education').value,
+                    about: document.getElementById('about').value,
+                    foreignLang: document.getElementById('foreign-lang').checked,
+                    birthdate: document.getElementById('birthdate').value,
+                    profession: document.getElementById('profession-select').value,
+                    country: document.getElementById('country-select').value,
+                    region: document.getElementById('region-select').value,
+                    city: document.getElementById('city-select').value,
+                    address: document.getElementById('address-input').value,
+                    sex: document.querySelector('input[name="sex"]:checked')?.value || '',
+                    skills: skills,
+                    socialLinks: socialLinks
+                };
+
+                // Если введен новый пароль, добавляем его
+                if (newPasswordInput.value) {
+                    userData.password = newPasswordInput.value;
+                }
+
+                // Сохраняем данные в localStorage
+                localStorage.setItem('currentUser', JSON.stringify(userData));
+
+                alert('Данные сохранены успешно!');
+                window.location.href = 'LK.html';
+            });
+        }
+    }
+</script>
+<script src="scripts/auth-manager.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        if (!authManager.requireAuth()) return;
+
+        // Загружаем JSON данные
+        await loadJSONData();
+
+        // Инициализируем форму
+        initializeForm(authManager.currentUser);
+
+        // Инициализируем загрузчик изображений
+        imageUploader = new ImageUploader();
+        imageUploader.loadProfileImage();
+
+        // Настраиваем обработчики событий
+        setupEventHandlers();
+    });
+
+    // В функции setupEventHandlers обновляем сохранение:
+    if (saveButton) {
+        saveButton.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            if (!checkPasswordMatch()) {
+                showModal('Ошибка', 'Пароли не совпадают!', 'error');
+                return;
+            }
+
+            const emailInput = document.getElementById('email');
+            if (!emailInput.checkValidity()) {
+                showModal('Ошибка', 'Пожалуйста, введите корректный email адрес', 'error');
+                emailInput.focus();
+                return;
+            }
+
+            // Собираем данные...
+
+            // Сохраняем через authManager
+            if (authManager.updateUser(userData)) {
+                showModal('Успех', 'Данные сохранены успешно!', 'success');
+                setTimeout(() => {
+                    window.location.href = 'LK.html';
+                }, 1500);
+            } else {
+                showModal('Ошибка', 'Ошибка сохранения данных', 'error');
+            }
+        });
+    }
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Проверяем авторизацию
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser) {
+            alert('Пожалуйста, войдите в систему');
+            window.location.href = 'sign-in-page.html';
+            return;
+        }
+
+        // Загружаем фото профиля если есть
+        if (currentUser.photo) {
+            const photoArea = document.getElementById('photo-upload-area');
+            if (photoArea) {
+                photoArea.style.backgroundImage = `url(${currentUser.photo})`;
+                photoArea.classList.add('has-image');
+
+                // Обновляем текст
+                const uploadContent = photoArea.querySelector('.upload-content');
+                if (uploadContent) {
+                    uploadContent.querySelector('.upload-text').textContent = 'Фото загружено';
+                    uploadContent.querySelector('.upload-subtext').textContent = 'Нажмите для изменения';
+                }
+            }
+        }
+
+        // Инициализация загрузчика изображений
+        const imageUploader = new ImageUploader();
+
+        // Обработчик сохранения формы
+        document.getElementById('save-button').addEventListener('click', function() {
+            // Сохранение данных формы
+            saveUserData();
+        });
+    });
+
+    function saveUserData() {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
+
+        // Собираем данные из формы
+        const formData = {
+            firstName: document.getElementById('firstname').value,
+            lastName: document.getElementById('lastname').value,
+            middleName: document.getElementById('middlename').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            education: document.getElementById('education').value,
+            about: document.getElementById('about').value,
+            foreignLang: document.getElementById('foreign-lang').checked,
+            birthdate: document.getElementById('birthdate').value,
+            profession: document.getElementById('profession-select').value,
+            country: document.getElementById('country-select').value,
+            region: document.getElementById('region-select').value,
+            city: document.getElementById('city-select').value,
+            address: document.getElementById('address-input').value,
+            sex: document.querySelector('input[name="sex"]:checked')?.value || '',
+
+            // Сохранение фото
+            photo: currentUser.photo || ''
+        };
+
+        // Сохраняем новый пароль если он введен
+        const newPassword = document.getElementById('new-password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+
+        if (newPassword && newPassword === confirmPassword) {
+            formData.password = newPassword;
+        }
+
+        // Сохраняем в localStorage
+        localStorage.setItem('currentUser', JSON.stringify(formData));
+
+        // Обновляем в общем списке пользователей
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
+        const userIndex = users.findIndex(u => u.email === currentUser.email);
+
+        if (userIndex !== -1) {
+            users[userIndex] = { ...users[userIndex], ...formData };
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+
+        alert('Данные успешно сохранены!');
+        window.location.href = 'LK.html';
+    }
+</script>
+</body>
+</html>

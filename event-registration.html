@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация на Тавриду - Область будущего</title>
+    <link rel="icon" href="component/Property 1=Black 2.png">
+    <link rel="stylesheet" href="style/Home__style.css">
+    <link rel="stylesheet" href="style/style-font.css">
+    <link rel="stylesheet" href="style/adaptiive.css">
+    <link rel="stylesheet" href="style/hover-effect.css">
+    <link rel="stylesheet" href="style/event-registration.css">
+</head>
+<body>
+<div class="main-wrapper">
+    <header>
+        <div class="top-header">
+            <div class="top-header__left">
+                <img src="image/logo.png" alt="" class="logo">
+                <p class="text_text">Область будущего</p>
+            </div>
+
+            <div class="top-right">
+                <ul>
+                    <li><a href="./index.html">Главная</a></li>
+                    <li><a href="./news.html">Новости</a></li>
+                    <li><a href="./sob.html">События</a></li>
+                    <li class="top-right__hiden-item"><a href=""></a></li>
+                    <div class="close-menu">
+                        <span></span>
+                    </div>
+                </ul>
+                <div class="button">
+                    <a href="LK.html" class="black">
+                        <p>Личный кабинет</p>
+                    </a>
+                </div>
+            </div>
+            <div class="burger">
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="registration-container">
+        <!-- Хлебные крошки -->
+        <div class="breadcrumbs">
+            <a href="./sob.html">События</a> /
+            <a href="./event-details.html">Таврида</a> /
+            <span>Регистрация</span>
+        </div>
+
+        <div class="registration-content">
+            <div class="registration-main">
+                <div class="registration-header">
+                    <h1>Регистрация на "Таврида"</h1>
+                    <div class="progress-bar">
+                        <div class="progress-step active">1</div>
+                        <div class="progress-step">2</div>
+                        <div class="progress-step">3</div>
+                        <div class="progress-step">4</div>
+                    </div>
+                </div>
+
+                <form class="registration-form" id="registrationForm">
+                    <!-- Шаг 1: Личные данные -->
+                    <div class="form-step active" data-step="1">
+                        <h2>Личные данные</h2>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName">Имя *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName">Фамилия *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Телефон *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="birthDate">Дата рождения *</label>
+                                <input type="date" id="birthDate" name="birthDate" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Шаг 2: Профильная информация -->
+                    <div class="form-step" data-step="2">
+                        <h2>Профильная информация</h2>
+
+                        <div class="form-group">
+                            <label for="education">Образование *</label>
+                            <select id="education" name="education" required>
+                                <option value="">Выберите образование</option>
+                                <option value="school">Среднее</option>
+                                <option value="college">Среднее специальное</option>
+                                <option value="bachelor">Бакалавр</option>
+                                <option value="master">Магистр</option>
+                                <option value="phd">Аспирантура</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="occupation">Род занятий *</label>
+                            <input type="text" id="occupation" name="occupation" required
+                                   placeholder="Например: студент, дизайнер, разработчик">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="experience">Опыт в сфере *</label>
+                            <select id="experience" name="experience" required>
+                                <option value="">Выберите опыт</option>
+                                <option value="none">Нет опыта</option>
+                                <option value="less1">Менее 1 года</option>
+                                <option value="1-3">1-3 года</option>
+                                <option value="3-5">3-5 лет</option>
+                                <option value="5+">Более 5 лет</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Шаг 3: Мотивация -->
+                    <div class="form-step" data-step="3">
+                        <h2>Мотивационное письмо</h2>
+
+                        <div class="form-group">
+                            <label for="motivation">Почему вы хотите участвовать? *</label>
+                            <textarea id="motivation" name="motivation" rows="6" required
+                                      placeholder="Расскажите о ваших целях и ожиданиях от мероприятия..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="portfolio">Ссылка на портфолио (если есть)</label>
+                            <input type="url" id="portfolio" name="portfolio"
+                                   placeholder="https://your-portfolio.com">
+                        </div>
+                    </div>
+
+                    <!-- Шаг 4: Подтверждение -->
+                    <div class="form-step" data-step="4">
+                        <h2>Подтверждение данных</h2>
+
+                        <div class="confirmation-summary">
+                            <h3>Проверьте ваши данные:</h3>
+
+                            <div class="summary-item">
+                                <strong>Имя:</strong> <span id="summary-firstName"></span>
+                            </div>
+                            <div class="summary-item">
+                                <strong>Email:</strong> <span id="summary-email"></span>
+                            </div>
+                            <div class="summary-item">
+                                <strong>Образование:</strong> <span id="summary-education"></span>
+                            </div>
+                            <div class="summary-item">
+                                <strong>Род занятий:</strong> <span id="summary-occupation"></span>
+                            </div>
+
+                            <div class="agreement">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="agreement" required>
+                                    <span class="checkmark"></span>
+                                    Я согласен с обработкой персональных данных и правилами мероприятия
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="nav-btn prev-btn" style="display: none;">
+                            Назад
+                        </button>
+                        <button type="button" class="nav-btn next-btn">
+                            Далее
+                        </button>
+                        <button type="submit" class="nav-btn submit-btn" style="display: none;">
+                            Зарегистрироваться
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="registration-sidebar">
+                <div class="event-card">
+                    <h3>Таврида</h3>
+                    <div class="event-dates">
+                        <span>1-24 сентября 2024</span>
+                    </div>
+                    <div class="event-location">
+                        <span>Республика Крым</span>
+                    </div>
+
+                    <div class="registration-info">
+                        <h4>Информация о регистрации:</h4>
+                        <ul>
+                            <li>Регистрация бесплатная</li>
+                            <li>Требуется мотивационное письмо</li>
+                            <li>Отбор участников проводится организаторами</li>
+                            <li>Результаты будут отправлены на email</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="support-info">
+                    <h4>Нужна помощь?</h4>
+                    <p>Телефон поддержки: <br>+7 (800) 123-45-67</p>
+                    <p>Email: <br>support@oblast-budushego.ru</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./scripts/event-registration.js"></script>
+<script src="scripts/auth-manager.js"></script>
+<script src="scripts/auth-check.js"></script></body>
+</html>

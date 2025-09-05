@@ -1,0 +1,59 @@
+{
+  "professions": [
+    {
+      "id": "programmer",
+      "name": "Программист",
+      "skills": [
+        {"id": "javascript", "name": "JavaScript"},
+        {"id": "python", "name": "Python"},
+        {"id": "html-css", "name": "HTML/CSS"},
+        {"id": "databases", "name": "Базы данных"},
+        {"id": "algorithms", "name": "Алгоритмы"}
+      ]
+    },
+    {
+      "id": "designer",
+      "name": "Дизайнер",
+      "skills": [
+        {"id": "ui-ux", "name": "UI/UX"},
+        {"id": "photoshop", "name": "Adobe Photoshop"},
+        {"id": "figma", "name": "Figma"},
+        {"id": "typography", "name": "Типографика"},
+        {"id": "illustration", "name": "Иллюстрация"}
+      ]
+    },
+    {
+      "id": "musician",
+      "name": "Музыкант",
+      "skills": [
+        {"id": "music-notation", "name": "Нотная грамота"},
+        {"id": "solfege", "name": "Сольфеджио"},
+        {"id": "piano", "name": "Фортепиано"},
+        {"id": "guitar", "name": "Гитара"},
+        {"id": "vocal", "name": "Вокал"}
+      ]
+    },
+    {
+      "id": "teacher",
+      "name": "Учитель",
+      "skills": [
+        {"id": "teaching-methods", "name": "Методика преподавания"},
+        {"id": "psychology", "name": "Психология"},
+        {"id": "lesson-planning", "name": "Планирование уроков"},
+        {"id": "children-work", "name": "Работа с детьми"},
+        {"id": "public-speaking", "name": "Ораторское искусство"}
+      ]
+    },
+    {
+      "id": "manager",
+      "name": "Менеджер",
+      "skills": [
+        {"id": "project-management", "name": "Управление проектами"},
+        {"id": "communication", "name": "Коммуникация"},
+        {"id": "planning", "name": "Планирование"},
+        {"id": "analytics", "name": "Аналитика"},
+        {"id": "negotiations", "name": "Переговоры"}
+      ]
+    }
+  ]
+}

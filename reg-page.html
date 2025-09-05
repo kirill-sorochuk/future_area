@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/reg-page-style.css">
-    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="../style/Home__style.css">
-    <link rel="stylesheet" href="../style/style-font.css">
-    <link rel="stylesheet" href="../style/adaptiive.css">
-    <link rel="stylesheet" href="../style/hover-effect.css">
-    <link rel="stylesheet" href="/reg-page-style.css">
+    <link rel="stylesheet" href="style/reg-page-style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="style/Home__style.css">
+    <link rel="stylesheet" href="style/style-font.css">
+    <link rel="stylesheet" href="style/adaptiive.css">
+    <link rel="stylesheet" href="style/hover-effect.css">
+    <link rel="stylesheet" href="style/reg-page-style.css">
 
 </head>
 <body>
@@ -18,7 +18,7 @@
         <header>
                 <div class="top-header">
                     <div class="top-header__left">
-                        <img src="/image/logo.png" alt="" class="logo">
+                        <img src="./image/logo.png" alt="" class="logo">
                         <p class="text_text">Область будущего</p>
                         <!-- <img src="../chelovek7979.github.io/component/Property 1=Default.png" alt="" class="logo"> -->
                     </div>
@@ -26,7 +26,7 @@
                     <div class="top-right">
                         <ul>
                             <li><a href="./index.html">Главная</a></li>
-                            <li><a href="./news.css">Новости</a></li>
+                            <li><a href="./news.html">Новости</a></li>
                             <li><a href="./sob.html">События</a></li>
                             <li class="top-right__hiden-item"><a href=""></a></li>
                             <div class="close-menu">
@@ -35,7 +35,7 @@
 
                         </ul>
                         <div class="button">
-                            <a href="/index.html" class="black">
+                            <a href="./index.html" class="black">
                                 <p>Назад</p>
                             </a>
                             
@@ -60,18 +60,26 @@
                         <p id="text">Регистрация</p>
                     </div> -->
                     <div class="get-sign-in">
-                        <a href="/sign-in-page.html">Войти / </a>
-                        <a href="/reg-page.html" class="reg-page-text">Регистрация</a>
+                        <a href="./sign-in-page.html">Войти / </a>
+                        <a href="./reg-page.html" class="reg-page-text">Регистрация</a>
                     </div>
                     <div class="name_container">
                         <span>Имя</span><br><br>
-                        <input type="text" class="input_style" placeholder="Имя">
+                        <label>
+                            <input type="text" class="input_style" placeholder="Имя">
+                        </label>
                     </div>
-                    
-                    <div class="Email_container">
+
+                    <div class="email_container">
+                        <span>Email</span><br><br>
+                        <label for="email"></label><input type="email" class="input_style" placeholder="Email" id="email">
+                    </div>
+
+                    <div class="password_container">
                         <span>Пароль</span><br><br>
-                        <input type="text" class="input_style" placeholder="Пароль">
+                        <label for="password"></label><input type="password" class="input_style" placeholder="Пароль" id="password">
                     </div>
+
 
                     <label for="pet-select">Выберите регион</label>
 
@@ -86,24 +94,14 @@
                     </select>
                     <div class="Message_container">
                         <span>Дополнительная информация о вас*</span><br><br>
-                        <textarea id="story" name="story" class="placeholder input_style input_style_message" required placeholder="Сюда вы может написать интересные о себе факты)" ></textarea>
+                        <label for="story"></label><textarea id="story" name="story" class="placeholder input_style input_style_message" required placeholder="Сюда вы может написать интересные о себе факты)" ></textarea>
 
                     </div>
-                    
+
                     <form-button>
-                            <div class="btn" id="text_btn">
-                                <a href="/index.html"><span>Зарегестрироваться </span> </a>
-                                
-                            </div>
-                            <div class="next" id="text_btn">
-                                <a href="/index.html">
-                                    <p>Продолжить</p>
-                                </a>
-                                
-                            </div>
-                            
-                        
-                      
+                        <div class="btn" id="registerBtn">
+                            <span>Зарегистрироваться</span>
+                        </div>
                     </form-button>
                 </div>
 
@@ -113,7 +111,107 @@
                 
             </div>
         </div>
-    </div>   
+    </div>
+    <script src="scripts/database.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const registerBtn = document.querySelector('.btn');
+
+            registerBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const name = document.querySelector('input[placeholder="Имя"]').value;
+                const password = document.querySelector('input[placeholder="Пароль"]').value;
+                const email = document.querySelector('input[placeholder="Email"]').value;
+                const region = document.getElementById('pet-select').value;
+                const additionalInfo = document.getElementById('story').value;
+
+                // Валидация
+                if (!name || !password || !email) {
+                    alert('Пожалуйста, заполните все обязательные поля');
+                    return;
+                }
+
+                // Регистрируем пользователя
+                const result = window.userDB.registerUser({
+                    name,
+                    password,
+                    email,
+                    region,
+                    additionalInfo
+                });
+
+                if (result.success) {
+                    alert(result.message);
+                    window.location.href = 'sign-in-page.html';
+                } else {
+                    alert(result.message);
+                }
+            });
+        });
+    </script>
+    <script src="scripts/auth-manager.js"></script>
+    <script src="scripts/auth-check.js"></script>
 </body>
-<script src="/reg-page.js"></script>
-</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+<script src="scripts/database.js"></script>
+<script src="scripts/reg-page.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const registerBtn = document.getElementById('registerBtn');
+
+        if (registerBtn) {
+            registerBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const name = document.querySelector('input[placeholder="Имя"]').value;
+                const password = document.querySelector('input[placeholder="Пароль"]').value;
+                const email = document.querySelector('input[placeholder="Email"]').value;
+                const region = document.getElementById('pet-select').value;
+                const additionalInfo = document.getElementById('story').value;
+
+                // Валидация
+                if (!name || !password || !email) {
+                    authManager.showModal('Ошибка', 'Пожалуйста, заполните все обязательные поля', 'error');
+                    return;
+                }
+
+                // Проверка email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    authManager.showModal('Ошибка', 'Пожалуйста, введите корректный email', 'error');
+                    return;
+                }
+
+                // Проверка пароля
+                if (password.length < 6) {
+                    authManager.showModal('Ошибка', 'Пароль должен содержать не менее 6 символов', 'error');
+                    return;
+                }
+
+                // Регистрируем пользователя
+                const result = authManager.register({
+                    firstName: name,
+                    lastName: '', // Добавьте поле фамилии в форму
+                    middleName: '', // Добавьте поле отчества в форму
+                    password: password,
+                    email: email,
+                    region: region,
+                    about: additionalInfo,
+                    sex: '', // Добавьте поле пола в форму
+                    phone: '' // Добавьте поле телефона в форму
+                });
+
+                if (result.success) {
+                    authManager.showModal('Успех', result.message, 'success');
+                    setTimeout(() => {
+                        window.location.href = 'LK.html';
+                    }, 1500);
+                } else {
+                    authManager.showModal('Ошибка', result.message, 'error');
+                }
+            });
+        }
+    });
+</script>

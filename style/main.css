@@ -1,0 +1,54 @@
+.main-header__image-visible img{ 
+    width: 80%;
+
+}
+
+.main-header{
+    justify-content: space-between;
+}
+.main-header__image-visible{
+    display: flex;
+justify-content: flex-end;
+}
+/* Стили для области загрузки фото */
+.photo-upload {
+    border: 2px dashed #B9FF66;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #f9fff0;
+}
+
+.photo-upload:hover {
+    border-color: #8bc34a;
+    background: #f0ffe0;
+}
+
+.photo-upload.dragover {
+    border-color: #4CAF50;
+    background: #e8f5e9;
+    transform: scale(1.02);
+}
+
+.upload-content img {
+    border: 3px solid #B9FF66;
+    box-shadow: 0 5px 15px rgba(185, 255, 102, 0.3);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.error {
+    animation: shake 0.5s ease;
+}

@@ -1,0 +1,271 @@
+.registration-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.registration-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.registration-header {
+    margin-bottom: 40px;
+}
+
+.registration-header h1 {
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 36px;
+}
+
+.progress-bar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.progress-step {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.progress-step.active {
+    background: blueviolet;
+}
+
+.registration-form {
+    background: white;
+    border: 2px solid blueviolet;
+    border-radius: 25px;
+    padding: 40px;
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-step h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: blueviolet;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-navigation {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+    justify-content: space-between;
+}
+
+.nav-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.prev-btn {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.prev-btn:hover {
+    background: #ddd;
+}
+
+.next-btn,
+.submit-btn {
+    background: blueviolet;
+    color: white;
+}
+
+.next-btn:hover,
+.submit-btn:hover {
+    background: #8a2be2;
+}
+
+.confirmation-summary {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.confirmation-summary h3 {
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.summary-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.agreement {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+}
+
+/* Сайдбар */
+.registration-sidebar {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.event-card {
+    background: white;
+    border: 2px solid blueviolet;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.event-card h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.event-dates,
+.event-location {
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.registration-info {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.registration-info h4 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.registration-info ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.registration-info li {
+    margin-bottom: 10px;
+    color: #666;
+    font-size: 14px;
+}
+
+.support-info {
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.support-info h4 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.support-info p {
+    margin-bottom: 15px;
+    color: #666;
+    line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+    .registration-content {
+        grid-template-columns: 1fr;
+    }
+
+    .registration-sidebar {
+        position: static;
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .registration-form {
+        padding: 25px;
+    }
+
+    .form-navigation {
+        flex-direction: column;
+    }
+
+    .nav-btn {
+        width: 100%;
+    }
+}

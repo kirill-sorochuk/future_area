@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/reg-page-style.css">
-    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="../style/Home__style.css">
-    <link rel="stylesheet" href="../style/style-font.css">
-    <link rel="stylesheet" href="../style/adaptiive.css">
-    <link rel="stylesheet" href="../style/hover-effect.css">
-    <link rel="stylesheet" href="/sign-in-page.css">
+    <link rel="stylesheet" href="style/reg-page-style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="style/Home__style.css">
+    <link rel="stylesheet" href="style/style-font.css">
+    <link rel="stylesheet" href="style/adaptiive.css">
+    <link rel="stylesheet" href="style/hover-effect.css">
+    <link rel="stylesheet" href="style/sign-in-page.css">
 
 </head>
 <body>
@@ -18,7 +18,7 @@
         <header>
                 <div class="top-header">
                     <div class="top-header__left">
-                        <img src="/image/logo.png" alt="" class="logo">
+                        <img src="./image/logo.png" alt="" class="logo">
                         <p class="text_text">Область будущего</p>
                         <!-- <img src="../chelovek7979.github.io/component/Property 1=Default.png" alt="" class="logo"> -->
                     </div>
@@ -35,64 +35,96 @@
 
                         </ul>
                         <div class="button">
-                            <a href="/index.html" class="black">
+                            <a href="./index.html" class="black">
                                 <p>Назад</p>
                             </a>
-                            
+
                         </div>
                     </div>
                     <div class="burger">
                         <span></span>
-                    </div> 
+                    </div>
                 </div>
-        
+
 
         </header>
-        
+
 
         <div class="Conact-section Conact-section-reg">
             <div class="Conact-section-content">
                 <div class="Conact-section-content-form">
 <!--                     <div class="reg-marker">
-                        <button class="reg-marker-item"> 
+                        <button class="reg-marker-item">
                             <span></span>
                         </button>
                         <p id="text">Регистрация</p>
                     </div> -->
                     <div class="get-sign-in">
-                        <a href="/sign-in-page.html" class="sign-in-text">Войти / </a>
-                        <a href="/reg-page.html">Регистрация</a>
+                        <a href="./sign-in-page.html" class="sign-in-text">Войти / </a>
+                        <a href="./reg-page.html">Регистрация</a>
                     </div>
                     <div class="name_container">
-                        <span>Имя</span><br><br>
-                        <input type="text" class="input_style" placeholder="Имя">
+                        <span>Email или имя пользователя</span><br><br>
+                        <label for="login"></label><input type="text" class="input_style" placeholder="Email" id="login">
                     </div>
-                    
-                    <div class="Email_container">
+
+                    <div class="password_container">
                         <span>Пароль</span><br><br>
-                        <input type="text" class="input_style" placeholder="Пароль">
+                        <label for="password"></label><input type="password" class="input_style" placeholder="Пароль" id="password">
                     </div>
 
 
-                    
+
                     <form-button>
-                        <a href="/index.html">
-                            <div class="btn" id="text_btn">
-                                <span>Войти </span>
-                            </div>
-                        </a>
-                       
-                      
+                        <div class="btn" id="loginBtn">
+                            <span>Войти</span>
+                        </div>
                     </form-button>
+
                 </div>
 
                 <div class="Conact-section-content-img">
                     <img src="./image/Mask group.svg" alt="">
                 </div>
-                
+
             </div>
         </div>
-    </div>   
+    </div>
+<!--    <script src="scripts/database.js"></script>-->
+    <script src="scripts/auth-manager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginBtn = document.getElementById('loginBtn');
+
+            loginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const email = document.getElementById('login').value;
+                const password = document.getElementById('password').value;
+
+                if (!email || !password) {
+                    authManager.showModal('Ошибка', 'Пожалуйста, заполните все поля', 'error');
+                    return;
+                }
+
+                const result = authManager.login(email, password);
+
+                if (result.success) {
+                    authManager.showModal('Успех', 'Вход выполнен успешно!', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'LK.html';
+                    }, 1500);
+                } else {
+                    authManager.showModal('Ошибка', result.message, 'error');
+                }
+            });
+        });
+    </script>
+    <script src="scripts/auth-manager.js"></script>
+    <script src="scripts/auth-check.js"></script>
 </body>
-<script src="/sign-in-page.js"></script>
-</html>
+
+
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>-->
+<!--<script src="scripts/database.js"></script>-->
+<!--<script src="scripts/sign-in-page.js"></script>-->

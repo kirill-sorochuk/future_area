@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет - Область будущего</title>
+    <link rel="icon" href="component/Property 1=Black 2.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="style/Home__style.css">
+    <link rel="stylesheet" href="style/style-font.css">
+    <link rel="stylesheet" href="style/adaptiive.css">
+    <link rel="stylesheet" href="style/hover-effect.css">
+    <link rel="stylesheet" href="style/lk.css">
+</head>
+<body>
+<div class="main-wrapper">
+    <header>
+        <div class="top-header">
+            <div class="top-header__left">
+                <img src="image/logo.png" alt="" class="logo">
+                <p class="text_text">Область будущего</p>
+            </div>
+
+            <div class="top-right">
+                <ul>
+                    <li><a href="./index.html">Главная</a></li>
+                    <li><a href="./news.html">Новости</a></li>
+                    <li><a href="./sob.html">События</a></li>
+                    <li class="top-right__hiden-item"><a href=""></a></li>
+                    <div class="close-menu">
+                        <span></span>
+                    </div>
+                </ul>
+                <div class="button">
+                    <a href="index.html" class="black">
+                        <p>На главную</p>
+                    </a>
+                </div>
+            </div>
+            <div class="burger">
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container lk-container">
+        <!-- Хлебные крошки -->
+        <div class="breadcrumbs">
+            <a href="./index.html">Главная</a> / <span>Личный кабинет</span>
+        </div>
+
+        <div class="lk-header">
+            <h1>Личный кабинет</h1>
+            <div class="header-actions">
+                <a href="izmenenieLK.html" class="btn-edit">
+                    <i class="fas fa-edit"></i> Редактировать профиль
+                </a>
+            </div>
+        </div>
+
+        <div class="lk-content">
+            <div class="profile-sidebar">
+                <div class="profile-card">
+                    <div class="profile-photo">
+                        <img src="image/bazovy_ava/М1.png" alt="Фото профиля" id="profile-avatar">
+                    </div>
+                    <div class="profile-info">
+                        <h2 id="profile-name">Имя Фамилия</h2>
+                        <p id="profile-profession">Профессия</p>
+
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <div class="stat-value" id="social-count">0</div>
+                                <div class="stat-label">Соцсети</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="skills-count">0</div>
+                                <div class="stat-label">Навыки</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="lang-status">Нет</div>
+                                <div class="stat-label">Иностранный язык</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <!-- Основная информация -->
+                <div class="info-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-info-circle"></i> Основная информация</h3>
+                        <a href="izmenenieLK.html" class="edit-link">Редактировать</a>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">ФИО:</span>
+                            <span class="info-value" id="info-fullname">Не указано</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Пол:</span>
+                            <span class="info-value" id="info-sex">Не указано</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Дата рождения:</span>
+                            <span class="info-value" id="info-birthdate">Не указано</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Email:</span>
+                            <span class="info-value" id="info-email">Не указано</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Телефон:</span>
+                            <span class="info-value" id="info-phone">Не указано</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Образование:</span>
+                            <span class="info-value" id="info-education">Не указано</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- О себе -->
+                <div class="info-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-heart"></i> О себе</h3>
+                        <a href="izmenenieLK.html" class="edit-link">Редактировать</a>
+                    </div>
+                    <div class="info-item-full">
+                        <p id="info-about">Информация не указана</p>
+                    </div>
+                </div>
+
+                <!-- Местоположение -->
+                <div class="info-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-map-marker-alt"></i> Местоположение</h3>
+                        <a href="izmenenieLK.html" class="edit-link">Редактировать</a>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Страна:</span>
+                            <span class="info-value" id="info-country">Не указано</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Регион:</span>
+                            <span class="info-value" id="info-region">Не указано</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Город:</span>
+                            <span class="info-value" id="info-city">Не указано</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Адрес:</span>
+                            <span class="info-value" id="info-address">Не указано</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Навыки -->
+                <div class="info-section" id="skills-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-star"></i> Навыки</h3>
+                        <a href="izmenenieLK.html" class="edit-link">Редактировать</a>
+                    </div>
+                    <div class="skills-container" id="skills-list">
+                        <!-- Навыки будут загружены через JS -->
+                    </div>
+                </div>
+
+                <!-- Социальные сети -->
+                <div class="info-section" id="social-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-share-alt"></i> Социальные сети</h3>
+                        <a href="izmenenieLK.html" class="edit-link">Редактировать</a>
+                    </div>
+                    <div class="social-links" id="social-links">
+                        <!-- Соцсети будут загружены через JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Мои мероприятия -->
+        <div class="events-section">
+            <div class="section-header">
+                <h2><i class="fas fa-calendar-alt"></i> Мои мероприятия</h2>
+            </div>
+            <div class="events-grid" id="events-container">
+                <!-- Мероприятия будут загружены через JS -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="scripts/auth-manager.js"></script>
+<script src="scripts/auth-check.js"></script>
+<script>
+    // lk.js - Загрузка данных пользователя в личном кабинете
+    document.addEventListener('DOMContentLoaded', function() {
+        // Проверяем авторизацию
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser) {
+            alert('Пожалуйста, войдите в систему');
+            window.location.href = 'sign-in-page.html';
+            return;
+        }
+
+        // Загружаем данные пользователя
+        loadUserData(currentUser);
+    });
+
+    function loadUserData(userData) {
+        if (!userData) return;
+
+        // Основная информация
+        document.getElementById('profile-name').textContent =
+            `${userData.firstName || ''} ${userData.lastName || ''}`.trim() || 'Не указано';
+
+        document.getElementById('profile-profession').textContent =
+            userData.profession || 'Профессия не указана';
+
+        document.getElementById('info-fullname').textContent =
+            `${userData.lastName || ''} ${userData.firstName || ''} ${userData.middleName || ''}`.trim() || 'Не указано';
+
+        document.getElementById('info-sex').textContent =
+            userData.sex === 'male' ? 'Мужской' : userData.sex === 'female' ? 'Женский' : 'Не указано';
+
+        document.getElementById('info-birthdate').textContent =
+            userData.birthdate || 'Не указано';
+
+        document.getElementById('info-email').textContent =
+            userData.email || 'Не указано';
+
+        document.getElementById('info-phone').textContent =
+            userData.phone || 'Не указано';
+
+        document.getElementById('info-education').textContent =
+            userData.education || 'Не указано';
+
+        // О себе
+        document.getElementById('info-about').textContent =
+            userData.about || 'Информация не указана';
+
+        // Местоположение
+        document.getElementById('info-country').textContent =
+            userData.country || 'Не указано';
+
+        document.getElementById('info-region').textContent =
+            userData.region || 'Не указано';
+
+        document.getElementById('info-city').textContent =
+            userData.city || 'Не указано';
+
+        document.getElementById('info-address').textContent =
+            userData.address || 'Не указано';
+
+        // Навыки
+        const skillsList = document.getElementById('skills-list');
+        skillsList.innerHTML = '';
+
+        if (userData.skills && Object.keys(userData.skills).length > 0) {
+            for (const [skillId, value] of Object.entries(userData.skills)) {
+                const skillItem = document.createElement('div');
+                skillItem.className = 'skill-item';
+                skillItem.innerHTML = `
+                <span class="skill-name">${getSkillName(skillId)}</span>
+                <div class="skill-progress">
+                    <div class="skill-progress-bar" style="width: ${value}%"></div>
+                </div>
+                <span class="skill-value">${value}%</span>
+            `;
+                skillsList.appendChild(skillItem);
+            }
+            document.getElementById('skills-count').textContent = Object.keys(userData.skills).length;
+        } else {
+            skillsList.innerHTML = '<p>Навыки не указаны</p>';
+            document.getElementById('skills-count').textContent = '0';
+        }
+
+        // Социальные сети
+        const socialLinks = document.getElementById('social-links');
+        socialLinks.innerHTML = '';
+
+        if (userData.socialLinks && userData.socialLinks.length > 0) {
+            userData.socialLinks.forEach(link => {
+                const socialItem = document.createElement('a');
+                socialItem.href = link.url;
+                socialItem.target = '_blank';
+                socialItem.className = 'social-link';
+                socialItem.innerHTML = `
+                <i class="fab fa-${link.type}"></i>
+                <span>${getSocialName(link.type)}</span>
+            `;
+                socialLinks.appendChild(socialItem);
+            });
+            document.getElementById('social-count').textContent = userData.socialLinks.length;
+        } else {
+            socialLinks.innerHTML = '<p>Социальные сети не указаны</p>';
+            document.getElementById('social-count').textContent = '0';
+        }
+
+        // Иностранный язык
+        document.getElementById('lang-status').textContent =
+            userData.foreignLang ? 'Да' : 'Нет';
+
+        // Фото профиля
+        if (userData.photo) {
+            document.getElementById('profile-avatar').src = userData.photo;
+        }
+
+        // Мероприятия
+        loadUserEvents(userData.email);
+    }
+
+    function getSkillName(skillId) {
+        // Здесь должна быть логика получения названия навыка по ID
+        // Временная заглушка
+        const skillNames = {
+            'design': 'Дизайн',
+            'programming': 'Программирование',
+            'marketing': 'Маркетинг',
+            'management': 'Управление'
+        };
+        return skillNames[skillId] || skillId;
+    }
+
+    function getSocialName(type) {
+        const socialNames = {
+            'vk': 'VK',
+            'telegram': 'Telegram',
+            'instagram': 'Instagram',
+            'youtube': 'YouTube',
+            'max': 'MAX',
+            'other': 'Другая'
+        };
+        return socialNames[type] || type;
+    }
+
+    function loadUserEvents(userEmail) {
+        const eventsContainer = document.getElementById('events-container');
+        eventsContainer.innerHTML = '';
+
+        // Загрузка мероприятий пользователя из localStorage
+        const eventRegistration = JSON.parse(localStorage.getItem('eventRegistration'));
+
+        if (eventRegistration && eventRegistration.event === 'tavrida') {
+            const eventCard = document.createElement('div');
+            eventCard.className = 'event-card';
+            eventCard.innerHTML = `
+            <div class="event-image">
+                <img src="https://via.placeholder.com/300x200?text=Таврида" alt="Таврида">
+            </div>
+            <div class="event-info">
+                <h3>Таврида</h3>
+                <p class="event-date">1-24 сентября 2024</p>
+                <p class="event-status">Статус: ${eventRegistration.status}</p>
+                <p class="event-location">Республика Крым</p>
+            </div>
+        `;
+            eventsContainer.appendChild(eventCard);
+        } else {
+            eventsContainer.innerHTML = '<p>У вас нет зарегистрированных мероприятий</p>';
+        }
+    }
+</script>
+</body>
+</html>
