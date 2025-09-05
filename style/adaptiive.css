@@ -219,9 +219,15 @@ text-align: center;
 .main-header__image-hidden{
     display: block; 
 }
+    .main-header__image-hidden img{
+        width: 80%;
+    }
 .main-header__image-visible{
     display: none;
 }
+    .main-header__image-visible img{
+        display: none;
+    }
 .main-header__content{
   text-align: center;
 }
